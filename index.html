@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>SNP</title>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <style>
+        input:focus {
+            border-color: #80bdff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 2px solid #e5e5e5;
+        }
+
+        input:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container" style="border: 2px solid #e5e5e5; border-radius: 25px; border-width: 5px;">
+        <div class="form-container sign-up">
+            <form action="includes/signup.snp.php" method="POST">
+                <h1 style="font-size: 32px;">Create Account</h1>
+                <div class="social-icons">
+                    <!-- <a href="" class="icon">
+                        <img src="img/github-mark.png" alt="GitHub" height="60%">
+                    </a> -->
+                </div>
+                <input type="text" placeholder="Name" id="nameInput" name="name" required>
+                <input type="email" placeholder="Email" id="emailInput" name="email" required>
+                <div style="display: flex; align-items: center; width: 100%;">
+                    <input type="password" placeholder="Password" id="passwordInput" name="password" required>
+                    <button type="button" id="togglePassword" style="background-color: transparent; border: none; cursor: pointer; color:black; padding: 10px;">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <button type="submit" name="signup-submit">Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form action="includes/login.snp.php" method="POST">
+                <h1 style="font-size: 32px;">Sign In</h1>
+                <div class="social-icons">
+                    <!-- <a href="" class="icon">
+                        <img src="img/github-mark.png" alt="GitHub" height="60%">
+                    </a> -->
+                </div>
+                <input type="email" placeholder="Email" id="emailInputSignIn" name="email" required>
+                <div style="display: flex; align-items: center; width: 100%;">
+                    <input type="password" placeholder="Password" id="passwordInputSignIn" required name="password">
+                    <button type="button" id="togglePasswordSignIn" style="background-color: transparent; border: none; cursor: pointer; color:black; padding: 10px;">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <button type="submit" name="login-submit">Sign In</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Welcome to SNP!</h1>
+                    <p>Already have an account? Login now!</p>
+                    <button class="hidden" id="login">Sign In</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Welcome to SNP!</h1>
+                    <p>Don't have an account? Register yourself now!</p>
+                    <button class="hidden" id="register">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('passwordInput');
+
+        const togglePasswordSignIn = document.getElementById('togglePasswordSignIn');
+        const passwordInputSignIn = document.getElementById('passwordInputSignIn');
+
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+
+            if (type === 'text') {
+                togglePassword.querySelector('i').classList.remove('fa-eye');
+                togglePassword.querySelector('i').classList.add('fa-eye-slash');
+            } else {
+                togglePassword.querySelector('i').classList.remove('fa-eye-slash');
+                togglePassword.querySelector('i').classList.add('fa-eye');
+            }
+        });
+
+        togglePasswordSignIn.addEventListener('click', function () {
+            const type = passwordInputSignIn.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInputSignIn.setAttribute('type', type);
+
+            if (type === 'text') {
+                togglePasswordSignIn.querySelector('i').classList.remove('fa-eye');
+                togglePasswordSignIn.querySelector('i').classList.add('fa-eye-slash');
+            } else {
+                togglePasswordSignIn.querySelector('i').classList.remove('fa-eye-slash');
+                togglePasswordSignIn.querySelector('i').classList.add('fa-eye');
+            }
+        });
+    });
+    </script>
+</body>
+</html>
